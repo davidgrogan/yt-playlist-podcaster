@@ -1,0 +1,12 @@
+{
+  "name": "yt-playlist-podcaster",
+  "version": "1.0.0",
+  "description": "Download YouTube playlists as MP3s and serve them as podcast RSS feeds",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
