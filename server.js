@@ -52,12 +52,14 @@ app.post('/download', (req, res) => {
   jobs[jobId] = { status: 'running', playlistId, lines: [] };
 
   // yt-dlp invocation
+  const cookiesFile = path.join(__dirname, 'cookies.txt');
   const args = [
     '--extract-audio',
     '--audio-format', 'mp3',
     '--audio-quality', '0',
     '--write-info-json',
     '--embed-thumbnail',
+    ...(fs.existsSync(cookiesFile) ? ['--cookies', cookiesFile] : []),
     '--output', path.join(outDir, '%(title)s.%(ext)s'),
     url,
   ];
