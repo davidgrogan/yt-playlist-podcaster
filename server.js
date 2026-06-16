@@ -188,7 +188,8 @@ app.get('/feed/:playlistId', (req, res) => {
       try {
         const info = JSON.parse(fs.readFileSync(infoPath, 'utf8'));
         title = info.title || title;
-        description = info.description || '';
+        const videoUrl = info.webpage_url || '';
+        description = (videoUrl ? `${videoUrl}\n\n` : '') + (info.description || '');
         durationSeconds = info.duration || 0;
         if (info.upload_date) {
           // upload_date is YYYYMMDD
