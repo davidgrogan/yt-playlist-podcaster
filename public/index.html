@@ -9,84 +9,194 @@
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-      background: #0f0f0f;
-      color: #e8e8e8;
+      background: #b8e4f5;
       min-height: 100vh;
-      padding: 40px 20px;
     }
 
-    .container { max-width: 760px; margin: 0 auto; }
-
-    h1 {
-      font-size: 1.6rem;
-      font-weight: 700;
-      margin-bottom: 6px;
-      color: #fff;
+    /* ── SKY ── */
+    .sky {
+      background: linear-gradient(180deg, #8ecff0 0%, #c4eaf8 60%, #daf2fc 100%);
+      padding: 36px 40px 0;
+      position: relative;
+      overflow: hidden;
+      min-height: 280px;
     }
-    .subtitle { color: #888; font-size: 0.9rem; margin-bottom: 32px; }
 
+    .sun-wrap {
+      position: absolute;
+      top: 28px;
+      right: 70px;
+      width: 110px;
+      height: 110px;
+    }
+    .sun {
+      width: 56px;
+      height: 56px;
+      background: #f9c74f;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      box-shadow: 0 0 0 8px rgba(249,199,79,0.2);
+      animation: sunpulse 4s ease-in-out infinite;
+    }
+    @keyframes sunpulse {
+      0%, 100% { box-shadow: 0 0 0 8px rgba(249,199,79,0.2); }
+      50%       { box-shadow: 0 0 0 16px rgba(249,199,79,0.1); }
+    }
+    .ray {
+      position: absolute;
+      background: #f9c74f;
+      border-radius: 4px;
+      animation: raypulse 3s ease-in-out infinite;
+    }
+    @keyframes raypulse {
+      0%, 100% { opacity: 0.65; }
+      50%       { opacity: 1; }
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+      position: relative;
+      z-index: 3;
+    }
+    .logo {
+      font-size: 20px;
+      font-weight: 800;
+      color: #0a3d62;
+      letter-spacing: -0.02em;
+      text-decoration: none;
+    }
+    .logo span { color: #e84393; }
+
+    .hero {
+      text-align: center;
+      position: relative;
+      z-index: 3;
+      padding-bottom: 48px;
+    }
+    .hero h1 {
+      font-size: 40px;
+      font-weight: 900;
+      color: #0a3d62;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: 10px;
+    }
+    .hero p {
+      font-size: 15px;
+      color: #2471a3;
+    }
+
+    .wave-divider {
+      display: block;
+      width: 100%;
+      margin-bottom: -2px;
+    }
+
+    /* ── SEA ── */
+    .sea {
+      background: linear-gradient(180deg, #1a6fa8 0%, #0d4f82 100%);
+      padding: 28px 40px 48px;
+    }
+
+    .foam {
+      height: 5px;
+      background: rgba(255,255,255,0.25);
+      border-radius: 3px;
+      margin-bottom: 28px;
+      animation: foam 4s ease-in-out infinite;
+    }
+    @keyframes foam { 0%,100%{opacity:.25} 50%{opacity:.45} }
+
+    /* ── DOWNLOAD CARD ── */
     .card {
-      background: #1a1a1a;
-      border: 1px solid #2a2a2a;
-      border-radius: 12px;
-      padding: 24px;
-      margin-bottom: 24px;
+      background: #fff;
+      border-radius: 18px;
+      padding: 26px 24px;
+      margin-bottom: 20px;
     }
 
-    label { display: block; font-size: 0.85rem; color: #aaa; margin-bottom: 8px; }
+    .card label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #5d8aaa;
+      margin-bottom: 10px;
+    }
 
     .input-row { display: flex; gap: 10px; }
 
     input[type="text"] {
       flex: 1;
-      background: #111;
-      border: 1px solid #333;
-      border-radius: 8px;
-      color: #fff;
+      background: #f0f8ff;
+      border: 1.5px solid #c5e0f5;
+      border-radius: 10px;
+      color: #0a3d62;
       font-size: 0.95rem;
       padding: 10px 14px;
       outline: none;
       transition: border-color 0.15s;
     }
-    input[type="text"]:focus { border-color: #ff4444; }
+    input[type="text"]:focus { border-color: #1a6fa8; }
 
-    button {
-      background: #ff4444;
+    button.primary {
+      background: #e84393;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       color: #fff;
       cursor: pointer;
       font-size: 0.9rem;
-      font-weight: 600;
-      padding: 10px 20px;
+      font-weight: 700;
+      padding: 10px 22px;
       transition: background 0.15s, opacity 0.15s;
       white-space: nowrap;
     }
-    button:hover { background: #e03333; }
-    button:disabled { opacity: 0.5; cursor: not-allowed; }
+    button.primary:hover { background: #d03580; }
+    button.primary:disabled { opacity: 0.5; cursor: not-allowed; }
 
+    /* ── LOG SECTION ── */
     #log-section { display: none; }
 
-    .log-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
-    .log-title { font-size: 0.85rem; color: #aaa; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
-    .status-badge {
-      font-size: 0.75rem;
-      padding: 2px 10px;
-      border-radius: 999px;
-      font-weight: 600;
+    .log-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
     }
-    .status-badge.running { background: #1a3a1a; color: #4caf50; }
-    .status-badge.done    { background: #1a2e3a; color: #4fc3f7; }
-    .status-badge.error   { background: #3a1a1a; color: #ef5350; }
+    .log-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #5d8aaa;
+    }
+    .status-badge {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 12px;
+      border-radius: 999px;
+      letter-spacing: 0.04em;
+    }
+    .status-badge.running { background: #e8f5e9; color: #2e7d32; }
+    .status-badge.done    { background: #e3f2fd; color: #1565c0; }
+    .status-badge.error   { background: #fce4ec; color: #c62828; }
 
     #log {
-      background: #111;
-      border: 1px solid #2a2a2a;
-      border-radius: 8px;
-      color: #b0f0b0;
+      background: #f0f8ff;
+      border: 1.5px solid #c5e0f5;
+      border-radius: 10px;
+      color: #0a3d62;
       font-family: 'SFMono-Regular', 'Menlo', 'Monaco', monospace;
-      font-size: 0.78rem;
-      height: 260px;
+      font-size: 0.75rem;
+      height: 220px;
       overflow-y: auto;
       padding: 12px 14px;
       white-space: pre-wrap;
@@ -96,254 +206,431 @@
     #feed-result {
       display: none;
       margin-top: 16px;
-      background: #0d2a0d;
-      border: 1px solid #2a5a2a;
-      border-radius: 8px;
+      background: #e8f8f0;
+      border: 1.5px solid #a5d6b7;
+      border-radius: 10px;
       padding: 14px 16px;
     }
-    #feed-result .feed-label { font-size: 0.8rem; color: #888; margin-bottom: 6px; }
+    #feed-result .feed-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #2e7d32;
+      margin-bottom: 8px;
+    }
     .feed-url-row { display: flex; align-items: center; gap: 10px; }
     #feed-url {
       flex: 1;
-      background: #111;
-      border: 1px solid #2a5a2a;
-      border-radius: 6px;
-      color: #4fc3f7;
+      background: #fff;
+      border: 1.5px solid #a5d6b7;
+      border-radius: 8px;
+      color: #1a6fa8;
       font-family: monospace;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       padding: 7px 12px;
+      outline: none;
     }
     .copy-btn {
-      background: #1a3a1a;
-      border: 1px solid #2a5a2a;
-      border-radius: 6px;
-      color: #4caf50;
+      background: #2e7d32;
+      border: none;
+      border-radius: 8px;
+      color: #fff;
       cursor: pointer;
       font-size: 0.8rem;
-      font-weight: 600;
-      padding: 7px 14px;
+      font-weight: 700;
+      padding: 7px 16px;
       transition: background 0.15s;
     }
-    .copy-btn:hover { background: #2a4a2a; }
+    .copy-btn:hover { background: #1b5e20; }
 
-    h2 { font-size: 1rem; font-weight: 600; color: #ccc; margin-bottom: 16px; }
+    /* ── PLAYLISTS ── */
+    .section-title {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      margin-bottom: 20px;
+    }
 
-    #playlists-list { list-style: none; }
-    #playlists-list li {
-      border-bottom: 1px solid #222;
-      padding: 12px 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    .pl-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 16px;
     }
-    #playlists-list li:last-child { border-bottom: none; }
 
-    .pl-info { flex: 1; min-width: 0; }
-    .pl-title { font-size: 0.95rem; font-weight: 500; color: #e8e8e8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .pl-meta { font-size: 0.78rem; color: #666; margin-top: 2px; }
-    .pl-feed-url {
-      font-family: 'SFMono-Regular', 'Menlo', monospace;
-      font-size: 0.75rem;
-      color: #4fc3f7;
-      margin-top: 4px;
+    .pl-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 22px 20px;
+      border: 2px solid transparent;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .pl-card:hover {
+      border-color: #e84393;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+    }
+
+    .pl-icon {
+      width: 48px;
+      height: 48px;
+      background: #fff0fb;
+      border: 2px solid #f5b8e4;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+    }
+
+    .wave-bars {
+      display: flex;
+      gap: 3px;
+      align-items: flex-end;
+      height: 24px;
+    }
+    .wave-bars span {
+      width: 4px;
+      border-radius: 2px;
+      animation: bar 1.1s ease-in-out infinite;
+    }
+    .wave-bars span:nth-child(1) { background: #e84393; animation-delay: 0s; }
+    .wave-bars span:nth-child(2) { background: #f9844a; animation-delay: 0.12s; }
+    .wave-bars span:nth-child(3) { background: #f9c74f; animation-delay: 0.24s; }
+    .wave-bars span:nth-child(4) { background: #4cc9f0; animation-delay: 0.36s; }
+    .wave-bars span:nth-child(5) { background: #e84393; animation-delay: 0.18s; }
+    @keyframes bar { 0%,100%{height:4px} 50%{height:20px} }
+
+    .pl-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #0a3d62;
+      margin-bottom: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .pl-meta { font-size: 12px; color: #5d8aaa; margin-bottom: 6px; }
+    .pl-feed {
+      font-family: monospace;
+      font-size: 11px;
+      color: #1a6fa8;
+      margin-bottom: 16px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
       cursor: pointer;
       opacity: 0.8;
     }
-    .pl-feed-url:hover { opacity: 1; text-decoration: underline; }
+    .pl-feed:hover { opacity: 1; text-decoration: underline; }
 
-    .pl-actions { display: flex; gap: 8px; flex-shrink: 0; }
-    .pill-btn {
-      background: #1a2e3a;
-      border: 1px solid #2a4a5a;
-      border-radius: 6px;
-      color: #4fc3f7;
+    .pl-actions { display: flex; gap: 8px; }
+
+    .btn-rss {
+      background: #e3f2fd;
+      border: none;
+      border-radius: 8px;
+      color: #1565c0;
       cursor: pointer;
-      font-size: 0.78rem;
-      font-weight: 600;
-      padding: 5px 12px;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 6px 14px;
       text-decoration: none;
       transition: background 0.15s;
     }
-    .pill-btn:hover { background: #223848; }
+    .btn-rss:hover { background: #bbdefb; }
 
-    .empty { color: #555; font-size: 0.9rem; text-align: center; padding: 24px 0; }
+    .btn-delete {
+      background: #fce4ec;
+      border: none;
+      border-radius: 8px;
+      color: #c62828;
+      cursor: pointer;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 6px 14px;
+      margin-left: auto;
+      transition: background 0.15s;
+    }
+    .btn-delete:hover { background: #ffcdd2; }
+
+    .tag-live {
+      display: inline-block;
+      background: #d4f5e9;
+      color: #0a6b3f;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 999px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .empty {
+      text-align: center;
+      color: rgba(255,255,255,0.3);
+      font-size: 14px;
+      padding: 32px 0;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #072d4a;
+      padding: 18px 40px;
+      text-align: center;
+    }
+    footer p { font-size: 12px; color: #3a6a8a; }
+    footer a { color: #4a8ab5; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 600px) {
+      .sky { padding: 24px 20px 0; }
+      .sea { padding: 20px 20px 40px; }
+      .sun-wrap { right: 20px; }
+      .hero h1 { font-size: 28px; }
+      .input-row { flex-direction: column; }
+    }
   </style>
 </head>
 <body>
-<div class="container">
-  <h1>YT Playlist Podcaster</h1>
-  <p class="subtitle">Download a YouTube playlist as MP3s and subscribe in any podcast app.</p>
 
-  <div class="card">
-    <label for="url-input">YouTube Playlist URL</label>
-    <div class="input-row">
-      <input type="text" id="url-input" placeholder="https://www.youtube.com/playlist?list=..." />
-      <button id="dl-btn" onclick="startDownload()">Download</button>
+  <div class="sky">
+    <div class="sun-wrap" id="sunWrap">
+      <div class="sun"></div>
+    </div>
+
+    <nav>
+      <a class="logo" href="https://waveyvibe.dev">wavey<span>vibe</span>.dev</a>
+      <span style="font-size:13px; color:#2471a3; font-weight:500;">yt playlist podcaster</span>
+    </nav>
+
+    <div class="hero">
+      <h1>YT Playlist<br>Podcaster</h1>
+      <p>Download any YouTube playlist and subscribe in your podcast app.</p>
     </div>
   </div>
 
-  <div class="card" id="log-section">
-    <div class="log-header">
-      <span class="log-title">Download Log</span>
-      <span class="status-badge running" id="status-badge">Running</span>
-    </div>
-    <div id="log"></div>
-    <div id="feed-result">
-      <div class="feed-label">Your podcast RSS feed is ready:</div>
-      <div class="feed-url-row">
-        <input type="text" id="feed-url" readonly />
-        <button class="copy-btn" onclick="copyFeed()">Copy</button>
+  <svg class="wave-divider" viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="height:70px; background:linear-gradient(#daf2fc,#daf2fc);">
+    <path d="M0,40 C180,75 360,5 540,40 C720,75 900,5 1080,40 C1260,75 1380,20 1440,38 L1440,80 L0,80 Z" fill="#1a6fa8"/>
+    <path d="M0,55 C200,35 400,68 600,52 C800,36 1000,65 1200,48 C1320,40 1380,46 1440,52 L1440,80 L0,80 Z" fill="#1a6fa8" opacity="0.45"/>
+  </svg>
+
+  <div class="sea">
+    <div class="foam"></div>
+
+    <!-- Download -->
+    <div class="card">
+      <label for="url-input">YouTube Playlist URL</label>
+      <div class="input-row">
+        <input type="text" id="url-input" placeholder="https://www.youtube.com/playlist?list=..." />
+        <button class="primary" id="dl-btn" onclick="startDownload()">Download</button>
       </div>
     </div>
+
+    <!-- Log -->
+    <div class="card" id="log-section">
+      <div class="log-header">
+        <span class="log-label">Download Log</span>
+        <span class="status-badge running" id="status-badge">Running</span>
+      </div>
+      <div id="log"></div>
+      <div id="feed-result">
+        <div class="feed-label">Your podcast RSS feed is ready</div>
+        <div class="feed-url-row">
+          <input type="text" id="feed-url" readonly />
+          <button class="copy-btn" onclick="copyFeed()">Copy</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Playlists -->
+    <div class="section-title">downloaded playlists</div>
+    <div class="pl-grid" id="pl-grid">
+      <div class="empty">No playlists downloaded yet.</div>
+    </div>
   </div>
 
-  <div class="card">
-    <h2>Downloaded Playlists</h2>
-    <ul id="playlists-list"><li class="empty">No playlists downloaded yet.</li></ul>
-  </div>
-</div>
+  <footer>
+    <p>a <a href="https://waveyvibe.dev">waveyvibe.dev</a> app &mdash; riding the wave since 2025</p>
+  </footer>
 
-<script>
-  let currentEs = null;
+  <script>
+    let currentEs = null;
 
-  async function startDownload() {
-    const url = document.getElementById('url-input').value.trim();
-    if (!url) { alert('Please enter a playlist URL.'); return; }
+    // Sun rays
+    (function() {
+      const wrap = document.getElementById('sunWrap');
+      const cx = 55, cy = 55, dist = 42, n = 12;
+      for (let i = 0; i < n; i++) {
+        const angle = (i * 360 / n) * Math.PI / 180;
+        const len = i % 3 === 0 ? 18 : i % 3 === 1 ? 13 : 10;
+        const x = cx + Math.cos(angle) * dist;
+        const y = cy + Math.sin(angle) * dist;
+        const ray = document.createElement('div');
+        ray.className = 'ray';
+        ray.style.cssText = `width:5px;height:${len}px;left:${x}px;top:${y}px;transform:translate(-50%,-50%) rotate(${i*360/n+90}deg);animation-delay:${(i*0.18).toFixed(2)}s;`;
+        wrap.appendChild(ray);
+      }
+    })();
 
-    const btn = document.getElementById('dl-btn');
-    btn.disabled = true;
+    async function startDownload() {
+      const url = document.getElementById('url-input').value.trim();
+      if (!url) { alert('Please enter a playlist URL.'); return; }
 
-    const logEl = document.getElementById('log');
-    const logSection = document.getElementById('log-section');
-    const badge = document.getElementById('status-badge');
-    const feedResult = document.getElementById('feed-result');
+      const btn = document.getElementById('dl-btn');
+      btn.disabled = true;
 
-    logEl.textContent = '';
-    badge.textContent = 'Running';
-    badge.className = 'status-badge running';
-    feedResult.style.display = 'none';
-    logSection.style.display = 'block';
-    logSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      const logEl      = document.getElementById('log');
+      const logSection = document.getElementById('log-section');
+      const badge      = document.getElementById('status-badge');
+      const feedResult = document.getElementById('feed-result');
 
-    if (currentEs) currentEs.close();
+      logEl.textContent = '';
+      badge.textContent = 'Running';
+      badge.className = 'status-badge running';
+      feedResult.style.display = 'none';
+      logSection.style.display = 'block';
+      logSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
-    let res;
-    try {
-      res = await fetch('/download', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ url }),
-      });
-    } catch (e) {
-      appendLog('Error: ' + e.message);
-      badge.textContent = 'Error';
-      badge.className = 'status-badge error';
-      btn.disabled = false;
-      return;
-    }
+      if (currentEs) currentEs.close();
 
-    const data = await res.json();
-    if (!res.ok) {
-      appendLog('Error: ' + (data.error || 'Unknown error'));
-      badge.textContent = 'Error';
-      badge.className = 'status-badge error';
-      btn.disabled = false;
-      return;
-    }
-
-    const { jobId, playlistId } = data;
-    const feedUrl = `http://${location.hostname}:3000/feed/${playlistId}`;
-
-    const es = new EventSource(`/status/${jobId}`);
-    currentEs = es;
-
-    es.onmessage = (e) => {
-      const line = JSON.parse(e.data);
-      if (line.startsWith('__EXIT__')) {
-        const code = parseInt(line.slice(8));
-        es.close();
+      let res;
+      try {
+        res = await fetch('/download', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ url }),
+        });
+      } catch (e) {
+        appendLog('Error: ' + e.message);
+        badge.textContent = 'Error';
+        badge.className = 'status-badge error';
         btn.disabled = false;
-        if (code === 0) {
-          badge.textContent = 'Done';
-          badge.className = 'status-badge done';
-          document.getElementById('feed-url').value = feedUrl;
-          feedResult.style.display = 'block';
-          loadPlaylists();
-        } else {
-          badge.textContent = 'Error';
-          badge.className = 'status-badge error';
-        }
         return;
       }
-      appendLog(line);
-    };
 
-    es.onerror = () => {
-      es.close();
-      btn.disabled = false;
-    };
-  }
+      const data = await res.json();
+      if (!res.ok) {
+        appendLog('Error: ' + (data.error || 'Unknown error'));
+        badge.textContent = 'Error';
+        badge.className = 'status-badge error';
+        btn.disabled = false;
+        return;
+      }
 
-  function appendLog(line) {
-    const logEl = document.getElementById('log');
-    logEl.textContent += line + '\n';
-    logEl.scrollTop = logEl.scrollHeight;
-  }
+      const { jobId, playlistId } = data;
+      const feedUrl = `http://${location.hostname}:3000/feed/${playlistId}`;
 
-  function copyFeed() {
-    const val = document.getElementById('feed-url').value;
-    navigator.clipboard.writeText(val).then(() => {
-      const btn = document.querySelector('.copy-btn');
-      btn.textContent = 'Copied!';
-      setTimeout(() => btn.textContent = 'Copy', 1500);
-    });
-  }
+      const es = new EventSource(`/status/${jobId}`);
+      currentEs = es;
 
-  async function loadPlaylists() {
-    const res = await fetch('/playlists');
-    const playlists = await res.json();
-    const ul = document.getElementById('playlists-list');
+      es.onmessage = (e) => {
+        const line = JSON.parse(e.data);
+        if (line.startsWith('__EXIT__')) {
+          const code = parseInt(line.slice(8));
+          es.close();
+          btn.disabled = false;
+          if (code === 0) {
+            badge.textContent = 'Done';
+            badge.className = 'status-badge done';
+            document.getElementById('feed-url').value = feedUrl;
+            feedResult.style.display = 'block';
+            loadPlaylists();
+          } else {
+            badge.textContent = 'Error';
+            badge.className = 'status-badge error';
+          }
+          return;
+        }
+        appendLog(line);
+      };
 
-    if (playlists.length === 0) {
-      ul.innerHTML = '<li class="empty">No playlists downloaded yet.</li>';
-      return;
+      es.onerror = () => { es.close(); btn.disabled = false; };
     }
 
-    ul.innerHTML = playlists.map(p => `
-      <li>
-        <div class="pl-info">
+    function appendLog(line) {
+      const el = document.getElementById('log');
+      el.textContent += line + '\n';
+      el.scrollTop = el.scrollHeight;
+    }
+
+    function copyFeed() {
+      const val = document.getElementById('feed-url').value;
+      navigator.clipboard.writeText(val).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = 'Copy', 1500);
+      });
+    }
+
+    async function deletePlaylist(playlistId, btn) {
+      if (!confirm(`Delete this playlist and all its MP3 files? This cannot be undone.`)) return;
+      btn.disabled = true;
+      btn.textContent = 'Deleting…';
+      try {
+        const res = await fetch(`/playlist/${playlistId}`, { method: 'DELETE' });
+        if (res.ok) {
+          loadPlaylists();
+        } else {
+          alert('Delete failed.');
+          btn.disabled = false;
+          btn.textContent = 'Delete';
+        }
+      } catch (e) {
+        alert('Delete failed: ' + e.message);
+        btn.disabled = false;
+        btn.textContent = 'Delete';
+      }
+    }
+
+    async function loadPlaylists() {
+      const res = await fetch('/playlists');
+      const playlists = await res.json();
+      const grid = document.getElementById('pl-grid');
+
+      if (playlists.length === 0) {
+        grid.innerHTML = '<div class="empty">No playlists downloaded yet.</div>';
+        return;
+      }
+
+      grid.innerHTML = playlists.map(p => `
+        <div class="pl-card">
+          <div class="pl-icon">
+            <div class="wave-bars">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+          <span class="tag-live">Live</span>
           <div class="pl-title">${escHtml(p.title)}</div>
           <div class="pl-meta">${p.mp3Count} episode${p.mp3Count !== 1 ? 's' : ''}</div>
-          <div class="pl-feed-url" onclick="copyText('${escHtml(p.feedUrl)}', this)" title="Click to copy">${escHtml(p.feedUrl)}</div>
+          <div class="pl-feed" onclick="copyText('${escHtml(p.feedUrl)}', this)" title="Click to copy">${escHtml(p.feedUrl)}</div>
+          <div class="pl-actions">
+            <a class="btn-rss" href="${escHtml(p.feedUrl)}" target="_blank">View Feed</a>
+            <button class="btn-rss" onclick="copyText('${escHtml(p.feedUrl)}', this)">Copy RSS</button>
+            <button class="btn-delete" onclick="deletePlaylist('${escHtml(p.playlistId)}', this)">Delete</button>
+          </div>
         </div>
-        <div class="pl-actions">
-          <a class="pill-btn" href="${escHtml(p.feedUrl)}" target="_blank">View Feed</a>
-          <button class="pill-btn" onclick="copyText('${escHtml(p.feedUrl)}', this)">Copy RSS</button>
-        </div>
-      </li>
-    `).join('');
-  }
+      `).join('');
+    }
 
-  function copyText(text, btn) {
-    navigator.clipboard.writeText(text).then(() => {
-      const orig = btn.textContent;
-      btn.textContent = 'Copied!';
-      setTimeout(() => btn.textContent = orig, 1500);
-    });
-  }
+    function copyText(text, btn) {
+      navigator.clipboard.writeText(text).then(() => {
+        const orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = orig, 1500);
+      });
+    }
 
-  function escHtml(s) {
-    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-  }
+    function escHtml(s) {
+      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
 
-  loadPlaylists();
-  // Refresh the playlist list every 5 seconds so it stays current
-  // even if the page was loaded mid-download or after a server restart.
-  setInterval(loadPlaylists, 5000);
-</script>
+    loadPlaylists();
+    setInterval(loadPlaylists, 5000);
+  </script>
 </body>
 </html>

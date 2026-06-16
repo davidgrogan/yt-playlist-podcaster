@@ -126,6 +126,14 @@ app.get('/playlists', (req, res) => {
   res.json(entries);
 });
 
+// DELETE /playlist/:playlistId — remove all files and folder for a playlist
+app.delete('/playlist/:playlistId', (req, res) => {
+  const dir = path.join(DOWNLOADS_DIR, req.params.playlistId);
+  if (!fs.existsSync(dir)) return res.status(404).json({ error: 'Playlist not found' });
+  fs.rmSync(dir, { recursive: true, force: true });
+  res.json({ ok: true });
+});
+
 // GET /audio/:playlistId/:filename — serve MP3 files
 app.get('/audio/:playlistId/:filename', (req, res) => {
   const filePath = path.join(DOWNLOADS_DIR, req.params.playlistId, req.params.filename);
