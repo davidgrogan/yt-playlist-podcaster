@@ -59,7 +59,7 @@ app.post('/download', (req, res) => {
     '--audio-quality', '0',
     '--write-info-json',
     '--embed-thumbnail',
-    '--js-runtimes', 'nodejs',
+    '--js-runtimes', 'node',
     '--sleep-interval', '3',
     '--max-sleep-interval', '6',
     '--retries', '5',
