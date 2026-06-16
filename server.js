@@ -59,7 +59,7 @@ app.post('/download', (req, res) => {
     '--audio-quality', '0',
     '--write-info-json',
     '--embed-thumbnail',
-    '--extractor-args', 'youtube:player_client=ios',
+    '--extractor-args', 'youtube:player_client=mweb,web',
     '--sleep-interval', '2',
     '--max-sleep-interval', '5',
     '--retries', '5',
